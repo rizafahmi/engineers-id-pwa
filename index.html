@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie-edge">
     <meta name="description" content="Best video resources for learn programming">
     <link rel="stylesheet" href="style/main.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="style/spinner.css" type="text/css" media="screen" charset="utf-8">
     <title>PWA Learning Center</title>
   </head>
   <body>
@@ -20,6 +21,15 @@
       </div>
     </nav>
 
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+
+    <!-- Dynamic Content
     <ul class="cards">
       <li class="cards__item">
         <div class="card">
@@ -62,5 +72,15 @@
         </div>
       </li>
     </ul>
+    Dynamic Content -->
+    <div class="container">
+      <a href="/" class="btn card__btn">Show more</a>
+    </div>
+    <script src="scripts/vendors/es6-promise.min.js"></script>
+    <script src="scripts/vendors/fetch.js"></script>
+    <script src="scripts/vendors/system-production.js"></script>
+    <script type="text/javascript">
+      System.import('./scripts/app.js')
+    </script>
   </body>
 </html>
