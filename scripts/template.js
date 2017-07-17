@@ -4,6 +4,7 @@ define([], () => {
     template = template.replace('{{title}}', video.title)
     template = template.replace('{{description}}', video.description)
     template = template.replace('{{image}}', video.thumbnail)
+    template = template.replace('{{video}}', video.url)
     return template
   }
   const appendData = videos => {
