@@ -29,8 +29,8 @@
       <div class="rect5"></div>
     </div>
 
-    <!-- Dynamic Content
-    <ul class="cards">
+    <!-- Dynamic Content -->
+    <ul class="cards" style="display: none;">
       <li class="cards__item">
         <div class="card">
           <div class="card__image card__image--fence"></div>
@@ -72,14 +72,14 @@
         </div>
       </li>
     </ul>
-    Dynamic Content -->
-    <div class="container">
-      <a href="/" class="btn card__btn">Show more</a>
-    </div>
-    <script src="scripts/vendors/es6-promise.min.js"></script>
+    <!-- Dynamic Content -->
+    <!-- <div class="container"> -->
+    <!--   <a href="/" class="btn card__btn">Show more</a> -->
+    <!-- </div> -->
+    <script src="scripts/vendors/systemjs/system.js"></script>
+    <script src="scripts/vendors/es6-promise/es6-promise.js"></script>
     <script src="scripts/vendors/fetch.js"></script>
-    <script src="scripts/vendors/system-production.js"></script>
-    <script type="text/javascript">
+    <script>
       System.import('./scripts/app.js')
     </script>
   </body>
