@@ -45,13 +45,16 @@
         </div>
       </li>
     </script>
-    <!-- Dynamic Content -->
-    <!-- <div class="container"> -->
-    <!--   <a href="/" class="btn card__btn">Show more</a> -->
-    <!-- </div> -->
-    <script src="scripts/vendors/systemjs/system.js"></script>
+
+    <div class="container">
+      <button onclick="pageEvents.loadMore()" class="btn card__btn">Show more</button>
+    </div>
     <script src="scripts/vendors/es6-promise/es6-promise.js"></script>
     <script src="scripts/vendors/fetch.js"></script>
+    <script src="scripts/vendors/localforage/localforage.min.js"></script>
+    <script src="scripts/vendors/localforage/localforage-getitems.js"></script>
+    <script src="scripts/vendors/localforage/localforage-setitems.js"></script>
+    <script src="scripts/vendors/systemjs/system.js"></script>
     <script>
       System.import('./scripts/app.js')
     </script>
