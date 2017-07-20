@@ -14,6 +14,7 @@ define([], () => {
   const getVideos = () => {
     return new Promise((resolve, reject) => {
       videosInstance.keys().then(keys => {
+        debugger
         let index = keys.indexOf(lastItemId)
         if (index === -1) {
           index = keys.length
