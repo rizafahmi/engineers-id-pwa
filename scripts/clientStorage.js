@@ -14,7 +14,6 @@ define([], () => {
   const getVideos = () => {
     return new Promise((resolve, reject) => {
       videosInstance.keys().then(keys => {
-        debugger
         let index = keys.indexOf(lastItemId)
         if (index === -1) {
           index = keys.length
@@ -24,7 +23,8 @@ define([], () => {
         }
         const keySplice = keys.splice(index - limit, limit)
         videosInstance.getItems(keySplice).then(results => {
-          const returnArr = Object.keys(results).map(k => results[k]).reverse()
+          const returnArr = Object.keys(results).map(k => results[k])
+          debugger
           lastItemId = returnArr[returnArr.length - 1].id
           resolve(returnArr)
         })

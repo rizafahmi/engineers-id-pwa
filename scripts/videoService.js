@@ -18,7 +18,6 @@ define(['./template.js', './clientStorage.js'], (template, clientStorage) => {
 
   const loadMore = () => {
     clientStorage.getVideos().then(videos => {
-      debugger
       template.appendData(videos)
     })
   }
