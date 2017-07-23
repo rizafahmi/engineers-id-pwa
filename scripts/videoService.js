@@ -4,16 +4,19 @@ define(['./template.js', './clientStorage.js'], (template, clientStorage) => {
   const apiUrlVideosPath = apiUrlPath + 'videos'
 
   const loadData = () => {
-    fetch(
-      apiUrlVideosPath +
-        `?key_gte=${clientStorage.getLastVideoId() + 1}&_limit=4`
-    )
-      .then(res => res.json())
-      .then(data => {
-        clientStorage.addVideos(data).then(() => {
-          loadMore()
-        })
+    const lastVideoId = clientStorage.getLastVideoId()
+    let url
+    if (lastVideoId === null) {
+      url = apiUrlVideosPath + `?_sort=key&_order=desc&_limit=4`
+    } else {
+      url = apiUrlVideosPath +
+        `?_sort=key&_order=desc&key_lte=${lastVideoId + 1}&_limit=4`
+    }
+    fetch(url).then(res => res.json()).then(data => {
+      clientStorage.addVideos(data).then(() => {
+        loadMore()
       })
+    })
   }
 
   const loadMore = () => {

@@ -13,8 +13,7 @@ define([], () => {
       videoHTML += generateCard(videos[i])
     }
     document.querySelector('.cards').insertAdjacentHTML('beforeend', videoHTML)
-    document.querySelector('.spinner').style.display = 'none';
-    ('none')
+    document.querySelector('.spinner').style.display = 'none'
   }
 
   return {
