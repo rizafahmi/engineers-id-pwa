@@ -6,6 +6,7 @@ html {
   background-color: #f0f0f0;
 }
 body {
+  align-items: center;
   color: #999999;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -194,4 +195,14 @@ a.btn {
   margin: 0;
   padding: 1rem;
   justify-content:center;
+}
+
+#connection-status {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+  background-color: #e2e2e2;
+  width: 85%;
+  padding: 12px;
+  border-radius: 0.25rem;
 }
