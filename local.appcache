@@ -1,0 +1,27 @@
+CACHE MANIFEST
+# 2017-07-24:v1
+
+CACHE:
+
+index.html
+scripts/app.js
+scripts/clientStorage.js
+scripts/videoService.js
+scripts/template.js
+scripts/vendors/fetch.js
+scripts/vendors/es6-promise/es6-promise.js
+scripts/vendors/es6-promise/es6-promise.map
+scripts/vendors/localforage/localforage.min.js
+scripts/vendors/localforage/localforage-getitems.js
+scripts/vendors/localforage/localforage-setitems.js
+scripts/vendors/systemjs/system.js
+scripts/vendors/systemjs/system.js.map
+./
+
+# Resources that require the user to be online
+NETWORK:
+*
+
+FALLBACK:
+# Offline site here
+# / /offline-site.html
