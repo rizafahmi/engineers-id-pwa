@@ -1,5 +1,5 @@
 'use strict'
-
+// new
 const cacheName = 'videoCacheV1'
 const videoCacheFiles = [
   'scripts/app.js',
@@ -16,16 +16,36 @@ const videoCacheFiles = [
   'scripts/vendors/systemjs/system.js'
 ]
 
-this.addEventListener('install', event => {
+self.addEventListener('install', event => {
   console.log('From SW: Install Event', event)
   event.waitUntil(
-    caches.open(cacheName).then(cache => {
-      debugger
-      return cache.addAll(videoCacheFiles)
+    caches
+      .open(cacheName)
+      .then(cache => {
+        return cache.addAll(videoCacheFiles)
+      })
+      .then(() => {
+        return self.skipWaiting()
+      })
+  )
+})
+
+self.addEventListener('activate', event => {
+  console.log('From SW: Activate State', event)
+  self.clients.claim()
+  event.waitUntil(
+    caches.keys().then(cacheKeys => {
+      let deletePromises = []
+      for (let i = 0; i < cacheKeys.length; i++) {
+        if (cacheKeys[i] !== cacheName) {
+          deletePromises.push(caches.delete(cacheKeys[i]))
+        }
+      }
+      return Promise.all(deletePromises)
     })
   )
 })
 
-this.addEventListener('active', event => {
-  console.log('From SW: Activate State', event)
+self.addEventListener('fetch', e => {
+  // e.respondWith(new Response('hello'))
 })
