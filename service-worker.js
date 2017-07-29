@@ -1,7 +1,14 @@
 /* global self, caches */
 
 const cacheName = 'pwa'
-const filesToCache = []
+const filesToCache = [
+  '/',
+  '/index.html',
+  '/styles/main.css',
+  '/styles/spinner.css',
+  '/scripts/app.js',
+  '/images/logo.svg'
+]
 
 self.addEventListener('install', e => {
   console.log('[ServiceWorker] Install')
