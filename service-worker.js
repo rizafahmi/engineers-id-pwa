@@ -59,7 +59,7 @@ self.addEventListener('fetch', e => {
         })
       })
     )
-  } else if (e.request.url.indexOf('http://i3.ytimg.com') > -1) {
+  } else if (e.request.url.indexOf('https://i3.ytimg.com') > -1) {
     e.respondWith(
       caches.open(staticCacheName).then(cache => {
         return cache.match(e.request).then(response => {
