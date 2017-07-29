@@ -2,6 +2,7 @@
 
 const appShellCacheName = 'pwa'
 const dataCacheName = 'pwa-data-v1'
+const staticCacheName = 'pwa-static-v1'
 const filesToCache = [
   '/',
   '/index.html',
@@ -27,7 +28,11 @@ self.addEventListener('activate', e => {
     caches.keys().then(keyList => {
       return Promise.all(
         keyList.map(key => {
-          if (key !== appShellCacheName && key !== dataCacheName) {
+          if (
+            key !== appShellCacheName &&
+            key !== dataCacheName &&
+            key === staticCacheName
+          ) {
             console.log('[ServiceWorker] Removing old cache', key)
             return caches.delete(key)
           }
@@ -45,6 +50,18 @@ self.addEventListener('fetch', e => {
   if (e.request.url.indexOf(dataUrl) > -1) {
     e.respondWith(
       caches.open(dataCacheName).then(cache => {
+        return cache.match(e.request).then(response => {
+          return response ||
+            fetch(e.request).then(response => {
+              cache.put(e.request, response.clone())
+              return response
+            })
+        })
+      })
+    )
+  } else if (e.request.url.indexOf('http://i3.ytimg.com') > -1) {
+    e.respondWith(
+      caches.open(staticCacheName).then(cache => {
         return cache.match(e.request).then(response => {
           return response ||
             fetch(e.request).then(response => {
