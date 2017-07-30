@@ -65,17 +65,19 @@ self.addEventListener('fetch', e => {
       caches.open(staticCacheName).then(cache => {
         return cache.match(e.request).then(response => {
           return response ||
-            fetch(e.request, { mode: 'cors' }).then(response => {
-              cache.put(e.request, response.clone())
-              return response
-            })
+            fetch(e.request)
+              .then(response => {
+                cache.put(e.request, response.clone())
+                return response
+              })
+              .catch(e => console.log(e))
         })
       })
     )
   } else {
     e.respondWith(
       caches.match(e.request).then(response => {
-        return response || fetch(e.request, { mode: 'cors' })
+        return response || fetch(e.request)
       })
     )
   }
