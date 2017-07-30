@@ -46,11 +46,11 @@ self.addEventListener('activate', e => {
 // On Network Response Strategy
 self.addEventListener('fetch', e => {
   console.log('[ServiceWorker] Fetch', e.request.url)
-  const dataUrl = 'http://localhost:3000/videos'
+  const dataUrl = 'https://engineers-id-backend-ybbwzovhnl.now.sh/api/videos'
   if (e.request.url.indexOf(dataUrl) > -1) {
     e.respondWith(
       caches.open(dataCacheName).then(cache => {
-        return fetch(e.request)
+        return fetch(e.request, { mode: 'cors' })
           .then(networkResponse => {
             cache.put(e.request, networkResponse.clone())
             return networkResponse
@@ -65,7 +65,7 @@ self.addEventListener('fetch', e => {
       caches.open(staticCacheName).then(cache => {
         return cache.match(e.request).then(response => {
           return response ||
-            fetch(e.request).then(response => {
+            fetch(e.request, { mode: 'cors' }).then(response => {
               cache.put(e.request, response.clone())
               return response
             })
@@ -75,7 +75,7 @@ self.addEventListener('fetch', e => {
   } else {
     e.respondWith(
       caches.match(e.request).then(response => {
-        return response || fetch(e.request)
+        return response || fetch(e.request, { mode: 'cors' })
       })
     )
   }

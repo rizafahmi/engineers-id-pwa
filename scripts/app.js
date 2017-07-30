@@ -30,16 +30,22 @@ if ('serviceWorker' in navigator) {
 
 var networkDataReceived = false
 
-const url = 'http://localhost:3000/videos'
+const url = 'https://engineers-id-backend-ybbwzovhnl.now.sh/api/videos'
 
 // Fetch the last data
-const networkUpdate = fetch(url)
+const networkUpdate = fetch(url, {
+  method: 'GET',
+  mode: 'cors'
+})
   .then(function (response) {
     return response.json()
   })
   .then(function (json) {
     networkDataReceived = true
     appendData(json)
+  })
+  .catch(err => {
+    console.log(err)
   })
 
 // Fetch cached data
