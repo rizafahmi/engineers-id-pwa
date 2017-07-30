@@ -28,18 +28,39 @@ if ('serviceWorker' in navigator) {
   })
 }
 
+// Caching strategy
+
+let networkDataReceived = false
+
 const url = 'http://localhost:3000/videos'
-if ('caches' in window) {
-  caches.match(url).then(response => {
-    if (response) {
-      response.json().then(json => {
-        return appendData(json)
-      })
-    }
-  })
-}
 
 // Fetch the last data
-fetch(url).then(response => response.json()).then(json => {
-  return appendData(json)
-})
+const networkUpdate = fetch(url)
+  .then(response => response.json())
+  .then(json => {
+    networkDataReceived = true
+    appendData(json)
+  })
+
+// Fetch cached data
+if ('caches' in window) {
+  caches
+    .match(url)
+    .then(response => {
+      if (response) {
+        return response.json()
+      }
+    })
+    .then(json => {
+      if (!networkDataReceived) {
+        console.log(json)
+        appendData(json)
+      }
+    })
+    .catch(() => {
+      return networkUpdate
+    })
+    .catch(() => {
+      console.log('Bad connection')
+    })
+}
