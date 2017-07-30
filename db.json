@@ -41,6 +41,23 @@
       "thumbnail": "https://i3.ytimg.com/vi/PWhRbMsBeho/maxresdefault.jpg",
       "url": "https://www.youtube.com/embed/PWhRbMsBeho"
 
+    },
+    {
+      "id": 6,
+      "title": "All About Elixir: Riza Fahmi Introduces Phoenix Web Framework",
+      "description": "Slides: http://www.slideshare.net/rizafahmi/brief-intro-to-phoenix-elixir-meetup-at-bukalapak.  This event was held on April 28, 2016 under the auspices of Bukalapak. Special mention goes to CTO Nugroho Herucahyono for providing the space and snacks.",
+      "date_published": "2016-04-29",
+      "thumbnail": "https://i3.ytimg.com/vi/7j04qtSvhE4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/embed/7j04qtSvhE4"
+
+    },
+    {
+      "id": 7,
+      "title": "React Fundamentals By Simon Sturmer",
+      "description": "This is a talk about React for those thinking about starting a front-end project or mobile app, or thinking about rewriting an existing app.",
+      "date_published": "2016-04-08",
+      "thumbnail": "https://i3.ytimg.com/vi/iO19hujkryg/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=iO19hujkryg"
     }
   ]
 }

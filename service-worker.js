@@ -50,13 +50,14 @@ self.addEventListener('fetch', e => {
   if (e.request.url.indexOf(dataUrl) > -1) {
     e.respondWith(
       caches.open(dataCacheName).then(cache => {
-        return cache.match(e.request).then(response => {
-          return response ||
-            fetch(e.request).then(response => {
-              cache.put(e.request, response.clone())
-              return response
-            })
-        })
+        return fetch(e.request)
+          .then(networkResponse => {
+            cache.put(e.request, networkResponse.clone())
+            return networkResponse
+          })
+          .catch(() => {
+            return caches.match(e.request)
+          })
       })
     )
   } else if (e.request.url.indexOf('https://i3.ytimg.com') > -1) {
