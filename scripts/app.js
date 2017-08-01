@@ -47,25 +47,3 @@ const networkUpdate = fetch(url, {
   .catch(err => {
     console.log(err)
   })
-
-// Fetch cached data
-if ('caches' in window) {
-  caches
-    .match(url)
-    .then(function (response) {
-      if (response) {
-        return response.json()
-      }
-    })
-    .then(function (json) {
-      if (!networkDataReceived) {
-        appendData(json)
-      }
-    })
-    .catch(function () {
-      return networkUpdate
-    })
-    .catch(function () {
-      console.log('Bad connection')
-    })
-}
